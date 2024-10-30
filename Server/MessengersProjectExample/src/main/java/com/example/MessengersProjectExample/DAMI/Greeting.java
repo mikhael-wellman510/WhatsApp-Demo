@@ -10,4 +10,11 @@ import lombok.*;
 @Builder(toBuilder = true)
 public class Greeting {
     private String content;
+
+    @Override
+    public String toString() {
+        return "Greeting{" +
+                "content='" + content + '\'' +
+                '}';
+    }
 }

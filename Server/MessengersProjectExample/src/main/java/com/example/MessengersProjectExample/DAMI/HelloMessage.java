@@ -9,4 +9,11 @@ import lombok.*;
 @Builder(toBuilder = true)
 public class HelloMessage {
     private String name;
+
+    @Override
+    public String toString() {
+        return "HelloMessage{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }
