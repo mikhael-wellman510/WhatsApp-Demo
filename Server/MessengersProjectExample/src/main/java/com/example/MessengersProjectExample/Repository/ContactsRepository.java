@@ -7,9 +7,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface ContactsRepository extends JpaRepository<Contacts,String> {
 
-    @Query(value = "select u.id as id , u.phone_number as phoneNumber , u.username , u.last_seen as lastSeen , u.is_online as isOnline , u.created_at as createdAt from m_users as u where phone_number = :number ", nativeQuery = true)
-    Users findByNumber(@Param("number") String number);
+    @Query(value = "select * from m_contacts where user_id = :id" , nativeQuery = true)
+    List<Contacts> findAllById(@Param("id")String id);
+
 }

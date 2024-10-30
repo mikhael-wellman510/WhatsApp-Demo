@@ -12,6 +12,7 @@ public class ContactsResponse {
     private String id;
     private Users user;
     private Users contactsId;
+    private String name;
 
     @Override
     public String toString() {
@@ -19,6 +20,7 @@ public class ContactsResponse {
                 "id='" + id + '\'' +
                 ", user=" + user +
                 ", contactsId=" + contactsId +
+                ", name='" + name + '\'' +
                 '}';
     }
 }

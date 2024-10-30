@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/contacts")
@@ -27,6 +29,19 @@ public class ContactsController {
                         .statusCode(HttpStatus.CREATED.value())
                         .message("Sukses")
                         .data(contactsResponse)
+                        .build()
+                );
+    }
+
+    @GetMapping("/listContacts/{id}")
+    ResponseEntity<?> listContacts(@PathVariable String id){
+        List<ContactsResponse> contactsResponses = contactsService.listContacts(id);
+
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(CommonResponse.<List<ContactsResponse>>builder()
+                        .statusCode(HttpStatus.OK.value())
+                        .message("Sukses")
+                        .data(contactsResponses)
                         .build()
                 );
     }

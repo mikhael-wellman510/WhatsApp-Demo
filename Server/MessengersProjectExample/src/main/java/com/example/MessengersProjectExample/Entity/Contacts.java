@@ -19,6 +19,9 @@ public class Contacts {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
+
+    private String name;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private Users userId;
@@ -34,6 +37,7 @@ public class Contacts {
     public String toString() {
         return "Contacts{" +
                 "id='" + id + '\'' +
+                ", name='" + name + '\'' +
                 ", userId=" + userId +
                 ", contactId=" + contactId +
                 ", addedAt=" + addedAt +

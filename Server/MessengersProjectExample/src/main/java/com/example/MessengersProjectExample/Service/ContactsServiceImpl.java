@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -30,6 +31,7 @@ public class ContactsServiceImpl implements ContactsService{
 
             Contacts contacts = Contacts.builder()
                     .contactId(findNumber)
+                    .name(contactsRequest.getName())
                     .userId(myData)
                     .addedAt(LocalDateTime.now())
                     .build();
@@ -46,5 +48,18 @@ public class ContactsServiceImpl implements ContactsService{
         }
 
 
+    }
+
+    @Override
+    public List<ContactsResponse> listContacts(String id) {
+
+        List<Contacts> findAllContactsById = contactsRepository.findAllById(id);
+
+        return findAllContactsById.stream().map((val)->ContactsResponse.builder()
+                .id(val.getId())
+                .contactsId(val.getContactId())
+                .contactsId(val.getContactId())
+                .name(val.getName())
+                .build()).toList();
     }
 }
