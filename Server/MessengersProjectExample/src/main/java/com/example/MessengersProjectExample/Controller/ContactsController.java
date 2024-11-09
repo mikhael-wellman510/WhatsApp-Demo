@@ -45,4 +45,10 @@ public class ContactsController {
                         .build()
                 );
     }
+
+    @GetMapping("/cek")
+    ResponseEntity<?> cek(){
+
+        return ResponseEntity.ok("Mantep , udah jalan guys");
+    }
 }
